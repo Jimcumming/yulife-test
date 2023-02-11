@@ -14,6 +14,7 @@ Tasks completed
 * Moved ECS to private subnet and added nat gateway
 * Created an SSL certificate
 * Attached SSL cert to LB
+* Applied a secure SSL policy to the Load Balancer
 * Redirected http traffic to https
 * Setup logging
 
@@ -21,6 +22,7 @@ Tasks completed
 
 ### App folder
 Nginx config could be expanded to include security headers and content security policy
+Enable gzip compression in Nginx config
 
 ### CICD
 Copy only build folder to nginx container, not whole application.
