@@ -27,6 +27,8 @@ Enable gzip compression in Nginx config
 ### CICD
 Copy only build folder to nginx container, not whole application.
 
+Docker image should not run as root and ideally be built so it's compeltely 'rootless'
+
 Had to add `docker build --platform amd64` to build-container.sh script to allow for M1 mac compatibility
 
 Build container script should ideally use --frozen-lockfile to ensure build is deterministic
@@ -48,6 +50,8 @@ If this was a complete pipeline, you would probably want to do the following
 * rollback if error detected.
 
 ### Infrastructure
+It's recommended practice to pin the versions of your providers. 
+
 Ideally build process should make use of immutable tags. Makes it easier to roll back to specific versions if image tags are immutable. If tags can be overwritten you can't trust previous tags to have not changed. 
 
 EC2 Execution role doesn't really need `AmazonEC2ContainerRegistryFullAccess` it's only pulling images, so `AmazonEC2ContainerRegistryReadOnly` should do
